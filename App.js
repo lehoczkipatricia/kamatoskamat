@@ -11,19 +11,20 @@ export default function App() {
   const [tenyleges, setTenyleges] = useState();
 
   function handleCalcButton() {
-    let tenylegesKamat = ((1+(nevleges/(100*tokesitesSzam))^tokesitesSzam)-1)*betet;
-    setTenyleges(tenylegesKamat);
+    
+    let tenylegesKamat = (Math.pow((1+(nevleges/(100*tokesitesSzam))), tokesitesSzam)-1)*betet;
+    setTenyleges(tenylegesKamat.toFixed(2));
 
   }
   return (
     <View style={styles.container}>
       <Text>Kamatos kamat</Text>
 
-      <Text>Betét: </Text><TextInput onChangeText={(betet)=>setBetet(betet)} placeholder='Ide irjon'/>
+      <Text>Betét: </Text><TextInput onChangeText={(betet)=>setBetet(betet)} />
 
-      <Text>Tőkésítések száma: </Text><TextInput onChangeText={(tokesitesSzam)=>setTokesitesSzam(tokesitesSzam)} placeholder='Ide irjon'/>
+      <Text>Tőkésítések száma: </Text><TextInput style={styles.textInput} onChangeText={(tokesitesSzam)=>setTokesitesSzam(tokesitesSzam)} />
 
-      <Text>Névleges kamat:</Text><TextInput onChangeText={(nevleges)=>setNevleges(nevleges)} placeholder='Ide irjon'/>
+      <Text>Névleges kamat:</Text><TextInput onChangeText={(nevleges)=>setNevleges(nevleges)} />
 
       <TouchableHighlight
           style={styles.runButton}
@@ -57,5 +58,9 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
     paddingRight: 5,
     fontSize: 15,
+  },
+  textInput: {
+    border: '1px solid rgba(0, 0, 0, 0.05)'
+
   }
 });
